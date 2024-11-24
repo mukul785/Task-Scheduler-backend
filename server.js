@@ -40,7 +40,7 @@ to_do_user.pre('save', async function (next) {
     if (!this.isModified('password')) return next(); // If the password isn't modified, skip hashing
 
     try {
-        const salt = await bcrypt.genSalt(10); // Generate salt for hashing
+        const salt = await bcrypt.genSalt(2); // Generate salt for hashing
         this.password = await bcrypt.hash(this.password, salt); // Hash the password with the salt
         next(); // Call the next middleware in the stack
     } catch (err) {
